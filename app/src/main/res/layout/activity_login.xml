@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".ui.login.LoginActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:id="@+id/constrainLogin" >
+
+        <TextView
+            android:id="@+id/tvUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textColor="@color/secondaryDarkColor"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.16000003" />
+
+        <EditText
+            android:id="@+id/etUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="32dp"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Usuario"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:text=""
+            android:textColorHint="@color/secondaryDarkColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUsuario" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="15dp"
+            android:textColorHint="@color/secondaryDarkColor"
+            app:layout_constraintEnd_toEndOf="@+id/etUserName"
+            app:layout_constraintStart_toStartOf="@+id/etUserName"
+            app:layout_constraintTop_toBottomOf="@+id/etUserName" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_background_color"
+            android:text="Iniciar Sesion"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/etPassword"
+            app:layout_constraintStart_toStartOf="@+id/etPassword"
+            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+        <TextView
+            android:id="@+id/tvRegistrarUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Desea registrarse ?"
+            android:textColor="@color/secondaryDarkColor"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/button"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/button"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <include
+        android:id="@+id/llProgressBar"
+        layout="@layout/progress_baer_layout"
+        android:visibility="gone" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
