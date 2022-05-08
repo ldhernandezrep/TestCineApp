@@ -1,5 +1,6 @@
 package com.example.testcineapplication.cineapiservice
 
+import com.example.testcineapplication.data.remote.MoviesRoute
 import com.example.testcineapplication.data.remote.Usuario
 import com.example.testcineapplication.utilities.Constantes
 import okhttp3.OkHttpClient
@@ -21,6 +22,13 @@ interface CinepolisApiService {
         @Field("client_id") client_id: String,
         @Field("client_secret") client_secret: String
     ): Usuario
+
+    @Headers("api_key: stage_HNYh3RaK_Test")
+    @GET("v2/movies")
+    suspend fun getMoviesAndResourcesByCine(
+        @Query("country_code") country_code: String,
+        @Query("cinema") cinema: Int
+    ): MoviesRoute
 
 
     companion object {

@@ -5,17 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
-    
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imvUno"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/uno"></androidx.appcompat.widget.AppCompatImageView>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mian_navigation" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btnNavigationView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/colorWhite"
+        android:backgroundTint="@color/colorWhite"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
-        android:backgroundTint="@color/colorWhite"
-        app:menu="@menu/bottom_navigation_menu"
-        android:id="@+id/btnNavigationView">
+        app:menu="@menu/bottom_navigation_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
