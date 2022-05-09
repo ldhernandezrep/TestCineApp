@@ -12,6 +12,9 @@ class MoviesRoutesRepositoryImple(
 ) :
     MoviesResourceRepository {
 
+    /**
+     * Obtiene la lista de peliculas y la lista de rutas para bindear en el recycler principal
+     */
     override suspend fun getMovies(): MoviesRoute {
         var result: MoviesRoute
         var retun: MoviesRoute
@@ -78,6 +81,10 @@ class MoviesRoutesRepositoryImple(
         return retun
     }
 
+    /**
+     * Obtiene la pelicula con su recurso de rutas para poder bindear el detalle
+     * @param idMovie es el id de la pelicula que queremos consultar es del tipo entero
+     */
     override suspend fun getMoviesBYId(idMovie: Int): MoviesRoute {
         var listMedia: List<Media> = listOf()
         var listRoute = mutableListOf<Routes>()
