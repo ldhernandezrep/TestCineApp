@@ -15,11 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.testcineapplication.R
 import com.example.testcineapplication.cineapiservice.CinepolisApiService
 import com.example.testcineapplication.core.ResultsState
-import com.example.testcineapplication.data.local.DataBaseCine
-import com.example.testcineapplication.data.local.LocalLoginDataSource
-import com.example.testcineapplication.data.remote.Movie
-import com.example.testcineapplication.data.remote.RemoteLoginDataSource
-import com.example.testcineapplication.data.remote.RemoteMovieResourceDataSource
+import com.example.testcineapplication.data.local.*
+import com.example.testcineapplication.data.remote.*
 import com.example.testcineapplication.databinding.FragmentMovieBinding
 import com.example.testcineapplication.presentation.LoginViewModel
 import com.example.testcineapplication.presentation.LoginViewModelFactory
@@ -27,6 +24,7 @@ import com.example.testcineapplication.presentation.MovieViewModel
 import com.example.testcineapplication.presentation.MovieViewModelFactory
 import com.example.testcineapplication.repository.LoginRepositoryImple
 import com.example.testcineapplication.repository.MoviesRoutesRepositoryImple
+import com.example.testcineapplication.repository.RoutesRepositoryImple
 import com.example.testcineapplication.ui.login.MovieAdapter
 
 // TODO: Rename parameter arguments, choose names that match
@@ -52,7 +50,10 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
             MoviesRoutesRepositoryImple(
                 RemoteMovieResourceDataSource(
                     CinepolisApiService.create()
-                )
+                ),
+                LocalMovieDataSource(DataBaseCine.getDatabase(requireContext()).movieDAO()),
+                LocalMediaDataSource(DataBaseCine.getDatabase(requireContext()).mediaDAO()),
+                LocalRoutesDataSource(DataBaseCine.getDatabase(requireContext()).routeDAO())
             )
         )
     }
@@ -80,7 +81,9 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
                         false // reverse layout
                     )
                     binding.rcvCartelera.layoutManager = gridLayoutManager
-                    adapterMovie = MovieAdapter(x.data.routes[0].sizes, x.data.movies, this)
+                    adapterMovie = MovieAdapter(
+                        x.data.movies, this, x.data.routes
+                    )
                     binding.rcvCartelera.adapter = adapterMovie
                     Log.d("Succes", "usuario ${x.data}")
                 }
@@ -93,11 +96,13 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
 
     }
 
-    override fun onMovieClick(movie: Movie) {
-        var stringUno: String = movie.code.toString()
+    override fun onMovieClick(movie: Movie, route: List<Routes>) {
         findNavController().navigate(
             R.id.action_movieFragment_to_movieDetailFragment,
-            bundleOf("IdMovie" to movie.id)
+            bundleOf(
+                "IdMvoie" to movie.id
+            )
+
         )
     }
 

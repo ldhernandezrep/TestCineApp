@@ -7,9 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.testcineapplication.core.ResultsState
 import com.example.testcineapplication.repository.LoginRepository
 import com.example.testcineapplication.repository.MoviesResourceRepository
+import com.example.testcineapplication.repository.RoutesRepository
 import kotlinx.coroutines.Dispatchers
 
-class MovieViewModel(private val repoMovies: MoviesResourceRepository) : ViewModel() {
+class MovieViewModel(
+    private val repoMovies: MoviesResourceRepository
+) : ViewModel() {
 
 
     fun getMoviesAndResourcesByCine() = liveData(
@@ -19,7 +22,7 @@ class MovieViewModel(private val repoMovies: MoviesResourceRepository) : ViewMod
         try {
             emit(
                 ResultsState.Success(
-                    repoMovies.getMoviesAndResourcesByCine()
+                    repoMovies.getMovies()
                 )
             )
         } catch (ex: Exception) {
@@ -27,10 +30,11 @@ class MovieViewModel(private val repoMovies: MoviesResourceRepository) : ViewMod
         }
     }
 
-
 }
 
-class MovieViewModelFactory(private val repoMovies: MoviesResourceRepository) :
+class MovieViewModelFactory(
+    private val repoMovies: MoviesResourceRepository
+) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return modelClass.getConstructor(MoviesResourceRepository::class.java)

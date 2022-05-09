@@ -5,10 +5,16 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [UsuarioEntity::class], version = 2)
+@Database(
+    entities = [UsuarioEntity::class, MediaEntity::class, MovieEntity::class, RoutesEntity::class],
+    version = 4
+)
 abstract class DataBaseCine : RoomDatabase() {
 
     abstract fun loginDAO(): LoginDAO
+    abstract fun mediaDAO(): MediaDAO
+    abstract fun movieDAO(): MovieDAO
+    abstract fun routeDAO(): RoutesDAO
 
     companion object {
 
@@ -19,7 +25,7 @@ abstract class DataBaseCine : RoomDatabase() {
                 context.applicationContext,
                 DataBaseCine::class.java,
                 "movie_db"
-            ).build()
+            ).fallbackToDestructiveMigration().build()
             return INSTANCE!!
         }
 

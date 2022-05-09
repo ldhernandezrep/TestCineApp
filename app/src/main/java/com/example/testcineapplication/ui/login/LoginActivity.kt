@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.testcineapplication.cineapiservice.CinepolisApiService
 import com.example.testcineapplication.core.ResultsState
@@ -37,6 +38,17 @@ class LoginActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.button.setOnClickListener({
+            if (binding.etUserName.text.isEmpty()) {
+                //binding.tvRegistrarUsuario.error = "Ingrese su nombre de usuario"
+                Toast.makeText(this, "Ingrese su nombre de usuario", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+            if (binding.etPassword.text.isEmpty()) {
+                Toast.makeText(this, "Ingrese su contraseñao", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             LoguearUsuario();
         })
 

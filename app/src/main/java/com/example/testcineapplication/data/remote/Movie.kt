@@ -1,5 +1,8 @@
 package com.example.testcineapplication.data.remote
 
+import com.example.testcineapplication.data.local.*
+
+
 data class Movie(
     val rating: String = "",
     val genre: String = "",
@@ -13,3 +16,4 @@ data class Movie(
     val code: String = "",
     val original_name: String = ""
 )
+
