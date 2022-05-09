@@ -11,6 +11,10 @@ import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 interface CinepolisApiService {
+
+    /**
+     * Metodo para obtener el inicio de sesion recibe como Header el api_key
+     */
     @Headers("api_key: stage_HNYh3RaK_Test")
     @FormUrlEncoded
     @POST("v2/oauth/token")
@@ -23,6 +27,11 @@ interface CinepolisApiService {
         @Field("client_secret") client_secret: String
     ): Usuario
 
+    /**
+     * Metodo que hace la peticion para obtener las moives
+     *  @param country_code MX
+     *  @param cinema el id del cine que queremos consultar
+     */
     @Headers("api_key: stage_HNYh3RaK_Test")
     @GET("v2/movies")
     suspend fun getMoviesAndResourcesByCine(

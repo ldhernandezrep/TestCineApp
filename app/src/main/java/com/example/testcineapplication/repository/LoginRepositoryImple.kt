@@ -12,6 +12,9 @@ class LoginRepositoryImple(
     private val localDataSource: LocalLoginDataSource
 ) : LoginRepository {
 
+    /***
+     * Metodo para iniciar sesion consulta en el web service por usuario y contraseña
+     */
     override suspend fun signIn(
         email: String,
         passwordUsuario: String

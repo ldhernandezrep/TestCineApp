@@ -9,6 +9,9 @@ import java.net.SocketAddress
 
 object ConnectionInternet {
 
+    /***
+     * Metodo para checar la conexion a internet
+     */
     suspend fun isInternetAvailable() = coroutineScope {
         return@coroutineScope try {
             val sock = Socket()

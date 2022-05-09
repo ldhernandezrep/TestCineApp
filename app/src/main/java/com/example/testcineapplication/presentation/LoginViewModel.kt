@@ -10,6 +10,10 @@ import kotlinx.coroutines.Dispatchers
 
 class LoginViewModel(private val repoUsuario: LoginRepository) : ViewModel() {
 
+
+    /**
+     * Obtiene el inciio de sesion apartir de un usuario y una contraseña
+     */
     fun ObtenerUsuarioPorPasswordAndEmail(email: String, passwordUsuario: String) = liveData(
         viewModelScope.coroutineContext + Dispatchers.IO
     ) {
