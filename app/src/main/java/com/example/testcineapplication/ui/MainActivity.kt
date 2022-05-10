@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        Glide.with(this)
+       /* Glide.with(this)
             .load("http://static.cinepolis.com/resources/mx/movies/posters/94x137/39326-428836-20220506121740.jpg")
             .centerCrop()
-            .into(binding.imvUno)
+            .into(binding.imvUno)*/
     }
 }
