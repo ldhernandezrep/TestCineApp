@@ -2,7 +2,7 @@ package com.example.testcineapplication.utilities
 
 object Constantes {
 
-    const val BASE_URL = "https://stage-api.cinepolis.com/"
+    const val BASE_URL = ""
     const val COUNTRY_CODE = "MX"
     const val GRANT_TYPE = "password"
     const val CLIENT_ID = "IATestCandidate"
